@@ -1,0 +1,18 @@
+defn chunk(array, sizeOfChunks) {
+  def numberOfElements: size(array);
+  def numberOfChunks: floor(numberOfElements / sizeOfChunks);
+  def arrayOfChunks: 0..numberOfChunks ~map (index) {
+    def startingIndex: index * sizeOfChunks;
+    def endingIndex: startingIndex + sizeOfChunks;
+    array.[startingIndex..(endingIndex - 1)];
+  };
+
+  ^arrayOfChunks;
+}
+
+defn chunk(array, sizeOfChunks) {
+  ?[length(array) ?= 0 ?or sizeOfChunks ?< 0]: ^[];
+  def group = array.[0..sizeOfChunks);
+  def rest = array.[sizeOfChunks..];
+  ^concat([group], chunk(rest, sizeOfChunks));
+}
