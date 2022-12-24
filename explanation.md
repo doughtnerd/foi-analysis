@@ -30,7 +30,7 @@ defn chunk(array, sizeOfChunks) {
 }
 ```
 
-The original is fiarly readable I think, until you get to the comprehension part. At first glance, having range generation share similar syntax to slicing (the `..`) is a bit odd. Having `~` in front of map seems a bit odd too, as it leads me to wonder if `~` could be prefixed to any function and have that function be used in list comprehension or if `~` prefixed functions are a special class of functions. Lastly, the declaration of the `(index) {..body}` bit also seems odd. It doesn't follow what I thought would be the syntax for declaring a function and it doesn't follow the rules of return values (using `^`).
+The original is fairly readable I think, until you get to the comprehension part. At first glance, having range generation share similar syntax to slicing (the `..`) is a bit odd. Having `~` in front of map seems a bit odd too, as it leads me to wonder if `~` could be prefixed to any function and have that function be used in list comprehension or if `~` prefixed functions are a special class of functions. Lastly, the declaration of the `(index) {..body}` bit also seems odd. It doesn't follow what I thought would be the syntax for declaring a function and it doesn't follow the rules of return values (using `^`).
 
 The only other thing I would say is that I think a Haskell-like list comprehension would be nice here and perhaps add some clarity but overall, it's not bad.
 
@@ -154,7 +154,7 @@ Again, for funsies, tried to revise the code. Assuming it's syntactically correc
 ```js
 function binaryToDecimalConverter(binaryDigits) {
   var { decimal } = Array.from(binaryDigits).reduce(
-    ({ decimal, idx }) => {
+    ({ decimal, idx }, digit) => {
       var power = binaryDigits.length - idx - 1;
       decimal = decimal + (digit * Math.pow(2, power));
       return { decimal, idx: (idx + 1) };
